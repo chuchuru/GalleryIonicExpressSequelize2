@@ -1,0 +1,72 @@
+ion-header {
+    --background: #4c8bf5; /* Cambiar el color de fondo */
+    --color: white;
+  }
+  
+  ion-toolbar {
+    --background: #4c8bf5; /* Cambiar el color de la barra de herramientas */
+  }
+  
+  ion-title {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+  }
+  
+  form {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  ion-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+  
+  ion-label {
+    font-size: 16px;
+  }
+  
+  ion-input, ion-datetime {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  ion-button {
+    background-color: #4c8bf5;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  ion-button:disabled {
+    background-color: #e0e0e0;
+  }
+  
+  ion-item ion-label {
+    color: #4c8bf5;
+  }
+  
+  input[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  ion-icon {
+    font-size: 25px;
+    color: #4c8bf5;
+  }
+  
+  ion-fab-button {
+    background-color: #4c8bf5;
+  }
+  ion-datetime {
+    --padding-start: 10px; /* Ajusta el padding */
+    --padding-end: 10px;   /* Ajusta el padding */
+    --min-width: 150px;     /* Establece el ancho mínimo */
+    --max-width: 250px;     /* Establece el ancho máximo */
+  }
+  

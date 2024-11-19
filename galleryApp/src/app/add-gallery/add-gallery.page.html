@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="color: white;">Añadir Galería</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #galleryForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input
+        type="text"
+        name="name"
+        [(ngModel)]="gallery.name"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input
+        type="text"
+        name="address"
+        [(ngModel)]="gallery.address"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label for="fileInput">Selecciona una imagen (opcional)</ion-label>
+      <input
+        id="fileInput"
+        name="file"
+        type="file"
+        accept="image/*"
+        (change)="onImageSelected($event)"
+        capture="environment"
+      />
+      <!-- Esta línea solo es para móviles -->
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="!galleryForm.valid">
+      Añadir Galería
+    </ion-button>
+  </form>
+</ion-content>

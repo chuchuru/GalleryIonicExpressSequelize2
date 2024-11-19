@@ -1,0 +1,71 @@
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="filterPictures()" 
+    placeholder="Buscar..." 
+    showCancelButton="focus">
+  </ion-searchbar>
+
+  <!-- Lista de Obras -->
+  <ion-card *ngFor="let b of filteredPictures" class="custom-card">
+     <img *ngIf="b.filename" [src]="'http://localhost:8080/images/' + b.filename" alt="image"[ngStyle]="{'width': '50%', 'height': 'auto'}">
+    
+    <ion-card-header>
+      <ion-card-subtitle class="card-subtitle">Nombre de la Obra</ion-card-subtitle>
+      <ion-card-title size="large" class="card-title">{{ b.name }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <p class="card-description">{{ b.description }}</p>
+    </ion-card-content>
+    
+    <ion-footer class="custom-card-footer">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="bar-chart-outline" class="icon"></ion-icon>
+            <div class="revalue">{{ b.revalue }}</div>
+          </ion-col>
+          <ion-col class="text-center">
+            <ion-icon name="ribbon-outline" class="icon"></ion-icon>
+            <div>
+              <ion-icon name="{{ b.certified ? 'thumbs-up' : 'thumbs-down' }}" class="icon"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="pricetag-outline" class="icon"></ion-icon>
+            <div class="price">{{ b.price }}€</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-footer>
+
+    <!-- Botones de Borrar y Modificar -->
+    <ion-button fill="clear" color="primary" (click)="editPicture(b.id)">
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-button>
+    
+    <!-- Botón de Eliminar -->
+    <ion-button fill="clear" color="danger" (click)="presentConfirm(b.id)">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-card>
+
+  <!-- Botones flotantes (Añadir y Home) -->
+  <div class="fab-container">
+    <!-- Botón de Añadir a la derecha -->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+      <ion-fab-button [routerLink]="['/add-pictures']">
+        <ion-icon name="add" color="light"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <!-- Botón de Home a la izquierda -->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button color="tertiary" routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>

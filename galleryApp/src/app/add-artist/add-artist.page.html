@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="color: white;">Añadir Artista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #artistForm="ngForm">
+    <!-- Nombre del artista -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input
+        type="text"
+        name="name"
+        [(ngModel)]="artist.name"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Apellidos del artista -->
+    <ion-item>
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input
+        type="text"
+        name="surnames"
+        [(ngModel)]="artist.surnames"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Fecha de nacimiento -->
+    <ion-item>
+      <ion-label position="floating">Fecha de Nacimiento</ion-label>
+      <ion-datetime
+        name="dateBirth"
+        [(ngModel)]="artist.dateBirth"
+        placeholder="DD/MM/YYYY"
+        displayFormat="DD/MM/YYYY"
+        required
+      ></ion-datetime>
+    </ion-item>
+
+    <!-- Selección de imagen -->
+    <ion-item>
+      <ion-label for="fileInput">Seleccionar Imagen</ion-label>
+      <ion-button expand="full" (click)="chooseImageSource()">Seleccionar Imagen</ion-button>
+    </ion-item>
+
+    <!-- Mensajes de error -->
+    <div *ngIf="artistForm.submitted && !artist.name">
+      <ion-text color="danger">El nombre es obligatorio.</ion-text>
+    </div>
+    <div *ngIf="artistForm.submitted && !artist.surnames">
+      <ion-text color="danger">Los apellidos son obligatorios.</ion-text>
+    </div>
+    <div *ngIf="artistForm.submitted && !artist.dateBirth">
+      <ion-text color="danger">La fecha de nacimiento es obligatoria.</ion-text>
+    </div>
+
+    <!-- Botón para enviar -->
+    <ion-button expand="full" type="submit" [disabled]="!artistForm.valid">
+      Añadir Artista
+    </ion-button>
+  </form>
+</ion-content>

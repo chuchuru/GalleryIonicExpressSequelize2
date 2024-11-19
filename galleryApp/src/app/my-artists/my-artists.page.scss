@@ -1,0 +1,17 @@
+ion-button {
+    font-size: 1.5rem; // Cambia este valor según el tamaño que desees
+  }
+  
+  ion-icon {
+    font-size: 1.5rem; // Cambia este valor según el tamaño que desees
+  }
+  .custom-fab-button {
+    display: flex;
+    justify-content: center; /* Centra el ícono horizontalmente */
+    align-items: center; /* Centra el ícono verticalmente */
+  }
+  
+  .custom-fab-button ion-icon {
+    color: white; /* Asegura que el ícono sea blanco */
+    font-size: 30px; /* Ajusta el tamaño del ícono */
+  }

@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My Galleries</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Barra de búsqueda -->
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterGalleries()" placeholder="Buscar galería..." showCancelButton="focus"></ion-searchbar>
+
+  <!-- Lista de Galerías -->
+  <ion-card *ngFor="let gallery of filteredGalleries">
+    <ion-card-header>
+      <ion-card-title>{{ gallery.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ gallery.address }}</p>
+      <img *ngIf="gallery.filename" [src]="'http://localhost:8080/images/' + gallery.filename" alt="Gallery Image"/>
+    </ion-card-content>
+
+    <!-- Botones de Borrar y Editar (Reemplazado ion-card-footer por ion-item) -->
+    <ion-item>
+      <ion-button color="danger" (click)="presentConfirm(gallery.id)">Eliminar</ion-button>
+      <ion-button color="primary" (click)="editGallery(gallery.id)">Editar</ion-button>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
+
+<!-- Botón FAB para añadir nueva galería (izquierda) -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="start">
+  <ion-fab-button color="secondary" routerLink="/add-gallery">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<!-- Botón FAB para ir a Home (derecha) -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="home-outline" routerLink="/home"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

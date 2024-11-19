@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="color: white;">Añadir Obra de Arte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #pictureForm="ngForm">
+    <!-- Nombre de la obra -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input
+        type="text"
+        name="name"
+        [(ngModel)]="picture.name"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Descripción -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input
+        type="text"
+        name="description"
+        [(ngModel)]="picture.description"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Precio -->
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input
+        type="number"
+        name="price"
+        [(ngModel)]="picture.price"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Selección de Artista -->
+    <ion-item>
+      <ion-label>Artista</ion-label>
+      <ion-select [(ngModel)]="picture.artistId" name="artistId" required>
+        <ion-select-option *ngFor="let artist of artists" [value]="artist.id">
+          {{ artist.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Selección de Galería -->
+    <ion-item>
+      <ion-label>Galería</ion-label>
+      <ion-select [(ngModel)]="picture.galleryId" name="galleryId" required>
+        <ion-select-option *ngFor="let gallery of galleries" [value]="gallery.id">
+          {{ gallery.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Revalorización -->
+    <ion-item>
+      <ion-label>Revalorizada</ion-label>
+      <ion-checkbox [(ngModel)]="picture.revalue" name="revalue"></ion-checkbox>
+    </ion-item>
+
+    <!-- Imagen -->
+    <ion-item>
+      <ion-label>Seleccionar Imagen</ion-label>
+      <ion-button expand="full" (click)="chooseImageSource()">Seleccionar Imagen</ion-button>
+    </ion-item>
+
+    <!-- Vista previa de la imagen seleccionada -->
+    <ion-item *ngIf="selectedImage">
+      <ion-label position="stacked">Vista Previa</ion-label>
+      <img [src]="selectedImage" alt="Imagen seleccionada" style="width: 100%; height: auto;" />
+    </ion-item>
+
+    <!-- Botón Guardar -->
+    <ion-footer class="ion-padding">
+      <ion-button expand="full" type="submit" [disabled]="!pictureForm.valid">
+        Guardar
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

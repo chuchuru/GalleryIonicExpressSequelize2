@@ -1,0 +1,27 @@
+ion-header {
+    --background: #3880ff;  /* Fondo azul */
+    --ion-toolbar-background: #3880ff; /* Cambiar color del toolbar */
+  }
+  
+  ion-content {
+    --background: #f4f4f4; /* Fondo gris claro para la página */
+  }
+  
+  ion-item {
+    --highlight-color: #3880ff;  /* Color azul de la app */
+  }
+  
+  ion-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background: white;
+  }
+  
+  ion-button {
+    background: #3880ff;
+    color: white;
+    font-weight: bold;
+  }
+  
